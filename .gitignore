@@ -2,9 +2,16 @@
 .idea
 node_modules
 npm-debug.log
-uirecorder.log
+
+# test
 docs
 reports
+
+# uirecorder
+uirecorder.log
 screenshots/**/*.png
 screenshots/**/*.html
 screenshots/**/*.json
+
+# sonarqube
+.scannerwork

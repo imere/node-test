@@ -10,7 +10,9 @@
     "installdriver": "selenium-standalone install --drivers.firefox.baseURL=http://npm.taobao.org/mirrors/geckodriver --baseURL=http://npm.taobao.org/mirrors/selenium --drivers.chrome.baseURL=http://npm.taobao.org/mirrors/chromedriver --drivers.ie.baseURL=http://npm.taobao.org/mirrors/selenium",
     "server": "selenium-standalone start",
     "singletest": "mocha --reporter macaca-reporter --reporter-options reportJSONFilename=index --bail",
-    "paralleltest": "macaca-mocha-parallel-tests \"!(node_modules)/**/*.spec.js\" --reporter macaca-reporter --reporter-options reportJSONFilename=index --max-parallel 5 --bail"
+    "paralleltest": "macaca-mocha-parallel-tests \"!(node_modules)/**/*.spec.js\" --reporter macaca-reporter --reporter-options reportJSONFilename=index --max-parallel 5 --bail",
+    "presonar": "npm run unit",
+    "sonar": "node ./quality/run-sonar.js"
   },
   "keywords": [],
   "author": "imere",
@@ -27,6 +29,7 @@
     "karma-chrome-launcher": "^3.0.0",
     "karma-coverage-istanbul-reporter": "^2.1.0",
     "karma-jasmine": "^2.0.1",
+    "karma-sonarqube-unit-reporter": "0.0.21",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^4.0.2",
     "macaca-mocha-parallel-tests": "^2.2.5",
@@ -39,6 +42,7 @@
     "rize": "^0.8.0",
     "selenium-standalone": "^6.16.0",
     "selenium-webdriver": "^4.0.0-alpha.4",
+    "sonarqube-scanner": "^2.5.0",
     "supertest": "^4.0.2",
     "uirecorder": "^3.1.2",
     "webpack": "^4.39.1"

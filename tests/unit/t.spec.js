@@ -1,6 +1,6 @@
 import { add } from "../../src/index";
 
-describe('q', function () {
+describe('add', function () {
   it('1 to be 1', function () {
     expect(add(1)).toBe(1)
   })
