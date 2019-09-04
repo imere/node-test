@@ -106,7 +106,7 @@ module.exports = function (config) {
          * - metadata[2] = plataform name
          * - metadata[3] = plataform version
          */
-        return ['report'].concat('xml').join('.');
+        return metadata.concat('xml').join('.');
       }
     },
 
