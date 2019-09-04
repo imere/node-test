@@ -7,24 +7,24 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                sh 'npm install'
+                bat 'npm config set registry https://registry.npm.taobao.org && npm install'
             }
         }
         stage('Test uint') {
             steps {
-                sh 'npm run unit'
+                bat 'npm run sonar'
             }
         }
         stage('Test e2e') {
             steps {
                 retry(2) {
-                    sh 'npm run e2e'
+                    bat 'npm run e2e'
                 }
             }
         }
         stage('Test service') {
             steps {
-                sh 'npm run service'
+                bat 'npm run service'
             }
         }
     }
