@@ -63,7 +63,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage-istanbul'],
+    reporters: ['progress', 'coverage-istanbul', 'sonarqube'],
 
     coverageIstanbulReporter: {
       // reports can be any that are listed here: https://github.com/istanbuljs/istanbuljs/tree/aae256fb8b9a3d19414dcf069c592e88712c32c6/packages/istanbul-reports/lib
@@ -92,7 +92,32 @@ module.exports = function (config) {
       },
     },
 
-    // plugins: ['karma-chrome-launcher', 'karma-jasmine','karma-webpack', 'karma-coverage-istanbul-reporter'],
+    sonarqubeReporter: {
+      basePath: 'tests/unit',        // test files folder
+      filePattern: '**/*.spec.js', // test files glob pattern
+      encoding: 'utf-8',          // test files encoding
+      outputFolder: 'docs/reports',    // report destination
+      legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
+      reportName: (metadata) => { // report name callback
+        /**
+         * Report metadata array:
+         * - metadata[0] = browser name
+         * - metadata[1] = browser version
+         * - metadata[2] = plataform name
+         * - metadata[3] = plataform version
+         */
+        return ['report'].concat('xml').join('.');
+      }
+    },
+
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-jasmine',
+      'karma-webpack',
+      "karma-sourcemap-loader",
+      'karma-coverage-istanbul-reporter',
+      require('karma-sonarqube-reporter')
+    ],
 
 
     // web server port
