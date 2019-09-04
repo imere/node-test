@@ -6,12 +6,12 @@
   "scripts": {
     "unit": "karma start",
     "e2e": "node ./tests/e2e/baidu.spec.js",
-    "service": "node ./mochaRunner.js",
+    "service": "node ./mochaRunner.js && jest \"tests/service/.+.test.js\"",
     "installdriver": "selenium-standalone install --drivers.firefox.baseURL=http://npm.taobao.org/mirrors/geckodriver --baseURL=http://npm.taobao.org/mirrors/selenium --drivers.chrome.baseURL=http://npm.taobao.org/mirrors/chromedriver --drivers.ie.baseURL=http://npm.taobao.org/mirrors/selenium",
     "server": "selenium-standalone start",
     "singletest": "mocha --reporter macaca-reporter --reporter-options reportJSONFilename=index --bail",
     "paralleltest": "macaca-mocha-parallel-tests \"!(node_modules)/**/*.spec.js\" --reporter macaca-reporter --reporter-options reportJSONFilename=index --max-parallel 5 --bail",
-    "presonar": "npm run unit",
+    "presonar": "npm run unit && npm run service",
     "sonar": "node ./quality/run-sonar.js"
   },
   "keywords": [],
@@ -20,9 +20,14 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "backstop": "^1.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
+    "jest": "^24.9.0",
     "jquery": "^3.4.1",
     "jwebdriver": "^2.3.1",
     "karma": "^4.2.0",
@@ -42,12 +47,20 @@
     "rize": "^0.8.0",
     "selenium-standalone": "^6.16.0",
     "selenium-webdriver": "^4.0.0-alpha.4",
-    "sonarqube-scanner": "^2.5.0",
     "supertest": "^4.0.2",
     "uirecorder": "^3.1.2",
     "webpack": "^4.39.1"
   },
   "dependencies": {
     "koa": "^2.7.0"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
   }
 }

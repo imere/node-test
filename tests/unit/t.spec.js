@@ -1,4 +1,4 @@
-import { add } from "../../src/index";
+import { add } from "../../web/src/index.js";
 
 describe('add', function () {
   it('1 to be 1', function () {

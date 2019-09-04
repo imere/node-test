@@ -70,7 +70,7 @@ module.exports = function (config) {
       reports: ['html', 'text-summary', 'lcov'],
 
       // base output directory. If you include %browser% in the path it will be replaced with the karma browser name
-      dir: require('path').join(__dirname, 'docs/coverage'),
+      dir: require('path').join(__dirname, 'docs/coverage/web'),
 
       // Combines coverage information from multiple browsers into one report rather than outputting a report
       // for each browser.

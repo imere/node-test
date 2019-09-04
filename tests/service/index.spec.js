@@ -1,8 +1,8 @@
 const supertest = require('supertest')
 
-const app = require('./index')
+const app = require('../../service/index.js')
 
-const request = () => supertest(app.listen())
+const request = () => supertest(app.listen(3000))
 
 describe('koa service', function () {
   it('api success', function (done) {
